@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@3rdweb/hooks": "^1.9.2",
+    "@3rdweb/react": "^1.9.3",
+    "@3rdweb/sdk": "^1.42.1",
     "@sanity/image-url": "^1.0.1",
     "dotenv": "^16.0.1",
     "next": "12.1.6",
