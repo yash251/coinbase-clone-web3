@@ -5,7 +5,7 @@ export default function Home() {
   const { address, connectWallet } = useWeb3();
   return (
     <div>
-      <button onClick={() => connectWallet('')}>Connect Wallet</button>
+      <button onClick={() => connectWallet('injected')}>Connect Wallet</button>
     </div>
   )
 }
