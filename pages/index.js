@@ -30,7 +30,6 @@ const WalletConnect = styled.div`
   align-items-center;
 `
 const Button = styled.div`
-  /* flex: 0; */
   border: 1px solid #282b2f;
   padding: 0.8rem;
   font-size: 1.3rem;
@@ -38,6 +37,7 @@ const Button = styled.div`
   border-radius: 0.4rem;
   background-color: #3773f5;
   color: #000;
+
   &:hover {
     cursor: pointer;
   }
