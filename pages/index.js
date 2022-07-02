@@ -3,17 +3,22 @@ import { useWeb3 } from '@3rdweb/hooks'
 
 export default function Home() {
   const { address, connectWallet } = useWeb3();
+  
   return (
     <Wrapper>
-      <WalletConnect>
-        <Button onClick={() => connectWallet('injected')}>
-          Connect Wallet
-        </Button>
-        <Details>
-          You need Chrome to be
-          <br /> able to run this app.
-        </Details>
-      </WalletConnect>
+      {address ? (
+        <h2>{address}</h2>
+      ) : (
+        <WalletConnect>
+          <Button onClick={() => connectWallet('injected')}>
+            Connect Wallet
+          </Button>
+          <Details>
+            You need Chrome to be
+            <br /> able to run this app.
+          </Details>
+        </WalletConnect>
+      )}
     </Wrapper>
   )
 }
