@@ -1,8 +1,11 @@
 import React from 'react'
+import styled from 'styled-components'
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <Button style={{ backgroundColor: '#3773f5', color: '#000' }}>
+        Buy / Sell
+    </Button>
   )
 }
 
@@ -30,7 +33,7 @@ const Button = styled.div`
   font-weight: 500;
   border-radius: 0.4rem;
   margin-right: 1rem;
-  
+
   &:hover {
     cursor: pointer;
   }
