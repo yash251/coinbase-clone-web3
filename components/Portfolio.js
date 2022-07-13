@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { coins } from '../static/coins'
+import Coin from './Coin'
 
 const Portfolio = () => {
   return (
