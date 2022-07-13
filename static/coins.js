@@ -57,7 +57,7 @@ export const coins = [
     allocation: 17.89,
   },
   {
-    name: 'Dogecoin 🌙',
+    name: 'Dogecoin',
     sign: 'DOGE',
     logo: dogeLogo,
     balanceUsd: 1.2,
