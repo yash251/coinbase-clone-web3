@@ -4,12 +4,12 @@ import styled from 'styled-components'
 import Main from '../components/Main'
 import Sidebar from '../components/Sidebar'
 
-const Dashboard = ({address}) => {
+const Dashboard = ({ address }) => {
   return (
     <Wrapper>
       <Sidebar />
       <MainContainer>
-        <Header />
+        <Header walletAddress={address} />
         <Main />
       </MainContainer>
     </Wrapper>
