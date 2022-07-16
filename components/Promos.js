@@ -1,8 +1,25 @@
 import React from 'react'
+import styled from 'styled-components'
 
 const Promos = () => {
   return (
-    <div>Promos</div>
+    <Wrapper>
+        <OfferCard>
+            <Title>Yield earned</Title>
+            <Description>Earn upto 2.82% APY on your crypto.</Description>
+            <Placeholder />
+            <Additional style={{ fontSize: '1.5rem' }}>
+                $0.00066 <span>2.84% APY</span>
+            </Additional>
+        </OfferCard>
+
+        <OfferCard>
+            <Title>Learn and Earn</Title>
+            <Description>Earn upto 2.82% APY on your crypto.</Description>
+            <Placeholder />
+            <Additional style={{ color: '#3773f5' }}>Verify Identity</Additional>
+        </OfferCard>
+    </Wrapper>
   )
 }
 
