@@ -4,27 +4,35 @@ import { BsThreeDotsVertical } from 'react-icons/bs'
 import { coins } from '../static/coins'
 import Coin from './Coin'
 import BalanceChart from './BalanceChart'
+import { ThirdwebSDK } from '@3rdweb/sdk'
+import { ethers } from 'ethers'
+
+const sdk = new ThirdwebSDK(
+    new ethers.Wallet(
+        process.env.NEXT_PUBLIC_METAMASK_KEY,
+        ethers.getDefaultProvider(
+            'https://rinkeby.infura.io/v3/'
+        )
+    )
+)
 
 const Portfolio = () => {
     const [walletBalance, setWalletBalance] = useState(0);
     const [sanityTokens, setSanityTokens] = useState([]);
+    const [thirdWebTokens, setThirdWebTokens] = useState([]);
 
     useEffect(() => {
-        const getCoins = async () => {
-            try {
-                const coins = await fetch(
-                    "https://3wdlx5s1.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%3D%3D'coins'%5D%20%7B%0A%20%20name%2C%0A%20%20usdPrice%2C%0A%20%20contractAddress%2C%0A%20%20symbol%2C%0A%20%20logo%2C%0A%7D"
-                )
-                const tempSanityTokens = await coins.json();
-                console.log(tempSanityTokens);
-                setSanityTokens(tempSanityTokens.result)
-            }
+        const getSanityAndThirdWebTokens = async () => {          
+            const coins = await fetch(
+                "https://3wdlx5s1.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%3D%3D'coins'%5D%20%7B%0A%20%20name%2C%0A%20%20usdPrice%2C%0A%20%20contractAddress%2C%0A%20%20symbol%2C%0A%20%20logo%2C%0A%7D"
+            )
+            const sanityTokens = (await coins.json()).result;
+            setSanityTokens(sanityTokens)
 
-            catch (error) {
-                console.log(error)
-            }
+            sanityTokens.map(token => console.log(token.contractAddress))
         }
-        getCoins();
+
+        getSanityAndThirdWebTokens();
     }, [])
     
   return (
