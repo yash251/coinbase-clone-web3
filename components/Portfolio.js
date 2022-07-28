@@ -11,7 +11,7 @@ const sdk = new ThirdwebSDK(
     new ethers.Wallet(
         process.env.NEXT_PUBLIC_METAMASK_KEY,
         ethers.getDefaultProvider(
-            'https://rinkeby.infura.io/v3/'
+            'https://rinkeby.infura.io/v3/47465af1e4924253935d625c19b1b514'
         )
     )
 )
