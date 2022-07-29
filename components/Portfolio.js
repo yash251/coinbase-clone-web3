@@ -29,12 +29,17 @@ const Portfolio = () => {
             const sanityTokens = (await coins.json()).result;
             setSanityTokens(sanityTokens)
 
-            sanityTokens.map(token => console.log(token.contractAddress))
+            setThirdWebTokens(
+                sanityTokens.map(token => sdk.getTokenModule(token.contractAddress))
+            )
         }
 
         getSanityAndThirdWebTokens();
     }, [])
     
+    console.log('Sanity ', sanityTokens);
+    console.log('Thirdweb', thirdWebTokens);
+
   return (
     <Wrapper>
         <Content>
