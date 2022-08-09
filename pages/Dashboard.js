@@ -36,15 +36,21 @@ const Dashboard = ({ address }) => {
     return getCoins()
   }, [])
 
-  console.log('Sanity ', sanityTokens);
-  console.log('Thirdweb', thirdWebTokens);
+  // console.log('Sanity ', sanityTokens);
+  // console.log('Thirdweb', thirdWebTokens);
 
   return (
     <Wrapper>
       <Sidebar />
       <MainContainer>
-        <Header walletAddress={address} />
-        <Main />
+        <Header 
+          walletAddress={address} 
+          sanityTokens={sanityTokens} 
+          thirdWebTokens={thirdWebTokens} />
+        <Main 
+          walletAddress={address} 
+          sanityTokens={sanityTokens} 
+          thirdWebTokens={thirdWebTokens} />
       </MainContainer>
     </Wrapper>
   )
