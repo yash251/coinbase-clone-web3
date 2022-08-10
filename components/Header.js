@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 Modal.setAppElement('#__next')
 
-const Header = ({ walletAddress, connectWallet }) => {
+const Header = ({ twTokens, sanityTokens, walletAddress, connectWallet }) => {
   const router = useRouter();
 
   const customStyles = {
@@ -29,27 +29,40 @@ const Header = ({ walletAddress, connectWallet }) => {
   return (
     <Wrapper>
       <Title>Assets</Title>
-        <ButtonsContainer>
+      <ButtonsContainer>
+        {walletAddress ? (
           <WalletLink>
             <WalletLinkTitle>Wallet Connected</WalletLinkTitle>
             <WalletAddress>
               {walletAddress.slice(0, 7)}...{walletAddress.slice(35)}
             </WalletAddress>
           </WalletLink>
-            <Button style={{ backgroundColor: '#3773f5', color: '#000' }}>
-                Buy / Sell
-            </Button>
-            <Link href={'/?transfer=1'}>
-              <Button>Send / Receive</Button>
-            </Link>
-        </ButtonsContainer>
-        <Modal
-          isOpen={!! router.query.transfer}
-          onRequestClose={() => router.push('/')}
-          style={customStyles}
-        >
-          <TransferModal />  
-        </Modal>
+        ) : (
+          <Button onClick={() => connectWallet('injected')}>
+            Connect Wallet
+          </Button>
+        )}
+        <Button style={{ backgroundColor: '#3773f5', color: '#000' }}>
+          Buy / Sell
+        </Button>
+        <Link href={'/?transfer=1'}>
+          <Button>Send / Receive</Button>
+        </Link>
+      </ButtonsContainer>
+      <Separator />
+      <ProfileIcon />
+
+      <Modal
+        isOpen={!!router.query.transfer}
+        onRequestClose={() => router.push('/')}
+        style={customStyles}
+      >
+        <TransferModal
+          twTokens={twTokens}
+          sanityTokens={sanityTokens}
+          walletAddress={walletAddress}
+        />
+      </Modal>
     </Wrapper>
   )
 }
@@ -57,7 +70,7 @@ const Header = ({ walletAddress, connectWallet }) => {
 export default Header
 
 const Wrapper = styled.div`
-  width: calc(100% - 3rem);
+  width: calc(100%);
   padding: 1rem 1.5rem;
   border-bottom: 1px solid #282b2f;
   display: flex;
@@ -68,21 +81,11 @@ const Title = styled.div`
   font-weight: 600;
   flex: 1;
 `
+
 const ButtonsContainer = styled.div`
   display: flex;
 `
-const Button = styled.div`
-  border: 1px solid #282b2f;
-  padding: 0.8rem;
-  font-size: 1.3rem;
-  font-weight: 500;
-  border-radius: 0.4rem;
-  margin-right: 1rem;
 
-  &:hover {
-    cursor: pointer;
-  }
-`
 const WalletLink = styled.div`
   font-size: 0.8rem;
   border: 1px solid #282b2f;
@@ -95,6 +98,7 @@ const WalletLink = styled.div`
   align-items: flex-start;
   justify-content: center;
 `
+
 const WalletLinkTitle = styled.div`
   font-size: 1.1rem;
   margin-bottom: 0.3rem;
@@ -104,3 +108,20 @@ const WalletLinkTitle = styled.div`
 const WalletAddress = styled.div`
   font-size: 0.8rem;
 `
+
+const Button = styled.div`
+  border: 1px solid #282b2f;
+  padding: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  border-radius: 0.4rem;
+  margin-right: 1rem;
+  
+  &:hover {
+    cursor: pointer;
+  }
+`
+
+const Separator = styled.div``
+
+const ProfileIcon = styled.div``

@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components'
 import { useWeb3 } from '@3rdweb/hooks'
 import Dashboard from './Dashboard';
@@ -37,7 +38,7 @@ const WalletConnect = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items-center;
+  align-items: center;
 `
 const Button = styled.div`
   border: 1px solid #282b2f;

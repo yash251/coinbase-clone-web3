@@ -4,15 +4,14 @@ import Image from 'next/image'
 import CoinbaseLogo from '../assets/cb-logo.png'
 import { navItems } from '../static/navItems'
 
-const Sidebar = () => {
-    
-    const [activeIcon, setActiveIcon] = useState(navItems[0].title)
+const Sidebar = () => {    
+  const [activeIcon, setActiveIcon] = useState(navItems[0].title);
     
   return (
     <Wrapper>
         <LogoContainer>
             <Logo>
-                <Image src={CoinbaseLogo} />
+                <Image src={CoinbaseLogo} alt='Coinbase Logo' />
             </Logo>
         </LogoContainer>
         <NavItemsContainer>
